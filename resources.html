@@ -1,0 +1,53 @@
+<!-- example: resources.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About</title>
+</head>
+<body>
+  <div id="header"></div>
+
+  <main>
+     <h1 class="mb-4">🌍 Global Climate Data Resources</h1>
+
+    <h3>🌍 Global Reanalysis Datasets</h3>
+    <p>These datasets provide a consistent reconstruction of past climate states using models and observations.</p>
+    <ul>
+      <li><strong><a href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels" target="_blank">ERA5 (ECMWF Reanalysis v5)</a></strong> – Provided by Copernicus; hourly data from 1950 onward</li>
+      <li><strong><a href="https://psl.noaa.gov/data/gridded/data.ncep.reanalysis.html" target="_blank">NCEP/NCAR Reanalysis</a></strong> – Global reanalysis since 1948</li>
+      <li><strong><a href="https://jra.kishou.go.jp/JRA-55/index_en.html" target="_blank">JRA-55 (Japanese Reanalysis)</a></strong> – Japanese Meteorological Agency, from 1958</li>
+      <li><strong><a href="https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/" target="_blank">MERRA-2</a></strong> – NASA reanalysis from 1980 onward</li>
+    </ul>
+
+    <h3 class="mt-5">🌀 Seasonal and Subseasonal Forecast Data</h3>
+    <ul>
+      <li><strong><a href="https://www.cpc.ncep.noaa.gov/products/NMME/" target="_blank">NMME</a></strong> – Multi-model seasonal forecast system</li>
+      <li><strong><a href="https://s2sprediction.net/" target="_blank">S2S Project Database</a></strong> – WMO initiative, forecasts from multiple global centers</li>
+      <li><strong><a href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/seasonal-monthly-single-levels" target="_blank">Copernicus Seasonal Forecasts (C3S)</a></strong> – ECMWF-led multi-model seasonal forecasts</li>
+    </ul>
+
+    <h3 class="mt-5">☁️ Climate Observations and Satellite Datasets</h3>
+    <ul>
+      <li><strong><a href="https://imdpune.gov.in/cmpg/Griddata/Rainfall_25_NetCDF.html" target="_blank">IMD Gridded Rainfall Data (India)</a></strong> – High-resolution gridded datasets for India</li>
+      <li><strong><a href="https://www.ncei.noaa.gov/cdo-web/" target="_blank">NOAA Climate Data Online (CDO)</a></strong> – Access to U.S. and global station data</li>
+      <li><strong><a href="https://giovanni.gsfc.nasa.gov/giovanni/" target="_blank">NASA Giovanni</a></strong> – Interactive access to satellite and model data</li>
+    </ul>
+  </main>
+  
+
+  <div id="footer"></div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('header.html')
+        .then(res => res.text())
+        .then(html => document.getElementById('header').innerHTML = html);
+
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(html => document.getElementById('footer').innerHTML = html);
+    });
+  </script>
+</body>
+</html>
