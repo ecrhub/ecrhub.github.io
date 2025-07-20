@@ -96,8 +96,12 @@
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     .sparkle {
@@ -139,9 +143,26 @@
       z-index: 0;
     }
 
-    .gear-1 { top: 10%; left: 10%; width: 80px; animation: spin 12s linear infinite; }
-    .gear-2 { bottom: 15%; right: 15%; width: 100px; animation: spinReverse 20s linear infinite; }
-    .gear-3 { top: 30%; right: 5%; width: 60px; animation: spin 18s linear infinite; }
+    .gear-1 {
+      top: 10%;
+      left: 10%;
+      width: 80px;
+      animation: spin 12s linear infinite;
+    }
+
+    .gear-2 {
+      bottom: 15%;
+      right: 15%;
+      width: 100px;
+      animation: spinReverse 20s linear infinite;
+    }
+
+    .gear-3 {
+      top: 30%;
+      right: 5%;
+      width: 60px;
+      animation: spin 18s linear infinite;
+    }
 
     @keyframes spin {
       0% { transform: rotate(0deg); }
@@ -153,34 +174,69 @@
       100% { transform: rotate(0deg); }
     }
 
-    /* Logo Glow */
-    .logo-glow {
-      width: 250px;
-      border: 4px solid white;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      animation: logoGlow 6s ease-in-out infinite alternate;
+    /* Logo Flash Styles */
+    #logo-flash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    .glow-logo {
+      max-width: 60%;
+      animation: popLogo 1.5s ease, logoGlow 2s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 15px #00ffff);
+    }
+
+    @keyframes popLogo {
+      0% {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     @keyframes logoGlow {
       from {
-        box-shadow: 0 0 10px #00faff, 0 0 20px #00faff, 0 0 30px #00faff;
+        filter: drop-shadow(0 0 10px #00e6e6);
+        transform: scale(1);
       }
       to {
-        box-shadow: 0 0 25px #00ffff, 0 0 35px #00ffff, 0 0 45px #00ffff;
+        filter: drop-shadow(0 0 25px #00ffff);
+        transform: scale(1.05);
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Flashing Glowing Logo -->
+  <div id="logo-flash">
+    <img src="assets/ecrhub-logo.png" alt="ECR Hub Logo" class="glow-logo">
+  </div>
+
   <div class="text-center">
     <div class="sub-text">Welcome to the inauguration of</div>
     <div class="glow-text">🎉 The ECR Hub for Earth Sciences</div>
 
-    <!-- Glowing Logo -->
-    <div class="mt-4">
-      <img src="assets/secretary-moes.png" alt="Logo" class="logo-glow" />
+    <!-- Dignitary Info -->
+    <div class="dignitary mt-4">
+      <img src="assets/secretary-moes.png" class="img-fluid rounded-circle mb-3" style="width: 250px; border: 3px solid white;">
       <div class="glow-text" style="font-size: 1.25rem; font-weight: 700;">Dr. M. Ravichandran</div>
       <div style="font-size: 1rem; opacity: 0.9;">Secretary, Ministry of Earth Sciences</div>
     </div>
@@ -204,6 +260,7 @@
     <path d="M50 30a20 20 0 1 1 0 40a20 20 0 1 1 0-40m0-10a30 30 0 1 0 0 60a30 30 0 1 0 0-60z"/>
   </svg>
 
+  <!-- Confetti and Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     // Sparkles
@@ -224,8 +281,10 @@
 
       const interval = setInterval(() => {
         const timeLeft = animationEnd - Date.now();
-        if (timeLeft <= 0) return clearInterval(interval);
-
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          return;
+        }
         const particleCount = 50 * (timeLeft / duration);
         confetti({
           ...defaults,
@@ -240,6 +299,7 @@
       document.querySelector('.btn-launch').style.display = 'none';
       const msg = document.getElementById('liveMsg');
       const countdown = document.getElementById('countdown');
+      const logoFlash = document.getElementById('logo-flash');
 
       msg.style.display = 'block';
       countdown.style.display = 'block';
@@ -254,9 +314,14 @@
         if (seconds === 0) {
           clearInterval(interval);
           countdown.textContent = `🚀 Launching...`;
+
+          // Show logo
+          logoFlash.style.opacity = '1';
+          logoFlash.style.pointerEvents = 'auto';
+
           setTimeout(() => {
             window.location.href = 'https://ecrhub.github.io';
-          }, 500);
+          }, 1200);
         }
       }, 1000);
     }
