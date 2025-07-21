@@ -36,13 +36,19 @@
     <div id="ecrCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000" style="width: 60%;">
       <div class="carousel-inner rounded shadow">
         <div class="carousel-item active">
-          <img src="assets/Slide1.png" class="d-block w-100" alt="ECR Event 1">
+          <img src="assets/Slide1.png" class="d-block w-100" alt="ECR">
         </div>
         <div class="carousel-item">
-          <img src="assets/Slide2.PNG" class="d-block w-100" alt="ECR Workshop">
+          <img src="assets/Slide2.PNG" class="d-block w-100" alt="ECR">
         </div>
         <div class="carousel-item">
-          <img src="assets/Slide3.PNG" class="d-block w-100" alt="ECR Training">
+          <img src="assets/Slide3.PNG" class="d-block w-100" alt="ECR">
+        </div>
+        <div class="carousel-item">
+          <img src="assets/Slide4.PNG" class="d-block w-100" alt="ECR">
+        </div>
+        <div class="carousel-item">
+          <img src="assets/Slide5.PNG" class="d-block w-100" alt="ECR">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#ecrCarousel" data-bs-slide="prev">
@@ -149,7 +155,7 @@
         document.getElementById('header').innerHTML = data;
       });
 
-    fetch('../footer.html')
+    fetch('footer.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer').innerHTML = data;
@@ -158,4 +164,3 @@
 
 </body>
 </html>
-
