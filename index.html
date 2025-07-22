@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+    // Prevent infinite reload loop by checking if already reloaded
+    if (!window.location.search.includes('refresh=')) {
+      window.location.href = window.location.pathname + '?refresh=' + new Date().getTime();
+    }
+  </script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Early Career Researchers' Hub for Earth Sciences</title>
