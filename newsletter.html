@@ -18,18 +18,26 @@
   <div id="footer"></div>
 
 <!-- Load header and footer via JavaScript -->
-  <script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Load header and then load Bootstrap JS
     fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header').innerHTML = data;
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header').innerHTML = html;
+
+        // Dynamically load Bootstrap Bundle JS after navbar is inserted
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';
+        script.defer = true;
+        document.body.appendChild(script);
       });
 
+    // Load footer
     fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer').innerHTML = data;
-      });
-  </script>
+      .then(res => res.text())
+      .then(html => document.getElementById('footer').innerHTML = html);
+  });
+</script>
 </body>
 </html>
