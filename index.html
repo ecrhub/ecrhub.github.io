@@ -15,18 +15,13 @@
     .section {
       padding: 60px 20px;
     }
-    .seminar-banner {
-      background: linear-gradient(90deg, #0052D4, #4364F7, #6FB1FC);
-      color: white;
+    .animated-banner {
       font-size: 1.2rem;
       font-weight: 600;
-      animation: pulse 4s ease-in-out infinite;
-      overflow: hidden;
-    }
-    
-    .banner-text {
-      display: inline-block;
-      animation: slideIn 1.5s ease-out;
+      color: white;
+      background: linear-gradient(270deg, #0052D4, #4364F7, #6FB1FC, #0052D4);
+      background-size: 800% 800%;
+      animation: gradientShift 10s ease infinite;
     }
     
     .banner-link {
@@ -39,23 +34,15 @@
       color: #fff;
     }
     
-    @keyframes slideIn {
-      from {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-    
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
       }
       50% {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
       }
     }
   </style>
