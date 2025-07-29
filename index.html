@@ -15,39 +15,50 @@
     .section {
       padding: 60px 20px;
     }
-    .animated-banner {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: white;
-      background: linear-gradient(-45deg, #0052D4, #4364F7, #6FB1FC, #00c6ff);
-      background-size: 400% 400%;
-      animation: gradientMove 12s ease infinite;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .banner-link {
-      color: #FFD700;
-      text-decoration: underline;
-      margin-left: 10px;
-      transition: color 0.3s ease;
-    }
-
-    .banner-link:hover {
-      color: #ffffff;
-    }
-
-    @keyframes gradientMove {
-      0% {
-        background-position: 0% 50%;
+    
+      .animated-banner {
+        position: relative;
+        overflow: hidden;
+        color: white;
+        font-weight: 600;
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 1rem;
+        z-index: 1000;
       }
-      50% {
-        background-position: 100% 50%;
+    
+      .animated-banner::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(270deg, #0052D4, #4364F7, #6FB1FC, #00c6ff);
+        background-size: 400% 100%;
+        animation: scrollGradient 10s linear infinite;
+        z-index: -1;
       }
-      100% {
-        background-position: 0% 50%;
+    
+      @keyframes scrollGradient {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
       }
-    }
+    
+      .banner-link {
+        color: #FFD700;
+        text-decoration: underline;
+        margin-left: 10px;
+        transition: color 0.3s ease;
+      }
+    
+      .banner-link:hover {
+        color: #ffffff;
+      }
+  
   </style>
 </head>
 <body>
