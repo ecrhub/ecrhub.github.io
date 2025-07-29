@@ -15,6 +15,49 @@
     .section {
       padding: 60px 20px;
     }
+    .seminar-banner {
+      background: linear-gradient(90deg, #0052D4, #4364F7, #6FB1FC);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      animation: pulse 4s ease-in-out infinite;
+      overflow: hidden;
+    }
+    
+    .banner-text {
+      display: inline-block;
+      animation: slideIn 1.5s ease-out;
+    }
+    
+    .banner-link {
+      color: #FFD700;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    
+    .banner-link:hover {
+      color: #fff;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+    }
   </style>
 </head>
 <body>
