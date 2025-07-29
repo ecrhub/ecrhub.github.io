@@ -19,22 +19,25 @@
       font-size: 1.2rem;
       font-weight: 600;
       color: white;
-      background: linear-gradient(270deg, #0052D4, #4364F7, #6FB1FC, #0052D4);
-      background-size: 800% 800%;
-      animation: gradientShift 10s ease infinite;
+      background: linear-gradient(-45deg, #0052D4, #4364F7, #6FB1FC, #00c6ff);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      position: relative;
+      z-index: 1000;
     }
-    
+  
     .banner-link {
       color: #FFD700;
       text-decoration: underline;
+      margin-left: 10px;
       transition: color 0.3s ease;
     }
-    
+  
     .banner-link:hover {
-      color: #fff;
+      color: #ffffff;
     }
-    
-    @keyframes gradientShift {
+  
+    @keyframes gradientMove {
       0% {
         background-position: 0% 50%;
       }
