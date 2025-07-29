@@ -31,8 +31,11 @@
     </div>
   </section>
 
-  <div id="seminar-banner" class="alert alert-info text-center mb-0 py-3" role="alert" style="background: linear-gradient(90deg, #0052D4, #4364F7, #6FB1FC); color: white; font-size: 1.2rem; font-weight: 600;">
-    🌍 Join us for the Upcoming Earth Sciences Seminar! <a href="#events" class="text-warning text-decoration-underline">See Details →</a>
+  <div id="seminar-banner" class="alert text-center mb-0 py-3 seminar-banner" role="alert">
+    <span class="banner-text">
+      🌍 Join us for the <strong>Upcoming Earth Sciences Seminar</strong>! 
+      <a href="#events" class="banner-link">See Details →</a>
+    </span>
   </div>
 
   <!-- Image Carousel -->
@@ -185,6 +188,16 @@
       .then(data => {
         document.getElementById('footer').innerHTML = data;
       });
+  </script>
+
+  <script>
+    // Set banner expiration date
+    const bannerExpiry = new Date('2025-08-14T23:59:59');
+    const today = new Date();
+  
+    if (today > bannerExpiry) {
+      document.getElementById('seminar-banner')?.remove();
+    }
   </script>
 
 </body>
